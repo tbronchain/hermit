@@ -30,14 +30,15 @@
     {{- if .Params.contact }}
     <div class="content">
         <div class="form-container" id="contact">
-            <form method="POST" action="{{ .Params.form_action }}" data-toggle="validator" data-netlify="true" netlify-honeypot="Reason">
+            <!--<form name="contact" method="POST" action="{{ .Params.form_action }}" data-toggle="validator" data-netlify="true" netlify-honeypot="Reason">-->
+            <form name="contact" method="POST" data-toggle="validator" data-netlify="true" netlify-honeypot="Reason">
                 <div class="form-group hidden">
                     <input class="form-control" type="text" name="reason" id="reason" placeholder="reason"
                            required>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="username" id="username" placeholder="{{.Params.name}}"
+                    <input class="form-control" type="text" name="name" id="name" placeholder="{{.Params.name}}"
                            required>
                     <div class="help-block with-errors"></div>
                 </div>
