@@ -53,6 +53,50 @@
             </form>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="/js/jqBootstrapValidation.js"></script>
+    <script type="text/javascript">
+     $(function() {
+
+         $("input,textarea").not("[type=search]").jqBootstrapValidation({
+             preventSubmit: true,
+             submitError: function($form, event, errors) {
+
+             },
+             submitSuccess: function($form, e) {
+                 e.preventDefault();
+
+                 var submitButton = $('button[type=submit]', $form);
+                 $.ajax({
+                     type: 'POST',
+                     url: $form.prop('action'),
+                     accept: {
+                         javascript: 'application/javascript'
+                     },
+                     data: $form.serialize(),
+                     beforeSend: function() {
+                         submitButton.prop('value', 'Please Wait...');
+                         submitButton.prop('disabled', 'disabled');
+                     }
+                 }).done(function(data) {
+                     submitButton.prop('value', 'Thank you for messaging me, I will get back to you shortly.');
+                     submitButton.prop('disabled', false);
+                     hj('formSubmitSuccessful');
+                 });
+             },
+
+             filter: function() {
+                 return $(this).is(":visible");
+             },
+         });
+
+     });
+
+
+     $('#name').focus(function() {
+         $('#success').html('');
+     });
+    </script>
     {{- end }}
 
 </main>
