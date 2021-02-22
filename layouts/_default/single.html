@@ -30,25 +30,21 @@
     {{- if .Params.contact }}
     <div class="content">
         <div class="form-container" id="contact">
-            <!--<form name="contact" method="POST" action="{{ .Params.form_action }}" data-toggle="validator" data-netlify="true" netlify-honeypot="Reason">-->
-            <form name="contact" method="POST" data-toggle="validator" data-netlify="true" netlify-honeypot="Reason">
+            <form name="contact" method="POST" action="{{ .Params.form_action }}" data-toggle="validator" data-netlify="true" netlify-honeypot="reason">
                 <div class="form-group hidden">
-                    <input class="form-control" type="text" name="reason" id="reason" placeholder="reason"
-                           required>
+                    <input class="form-control" type="text" name="reason" id="reason" placeholder="reason" />
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="name" id="name" placeholder="{{.Params.name}}"
-                           required>
+                    <input class="form-control" type="text" name="name" id="name" placeholder="{{.Params.name}}" required/>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="email" id="email" name="email" placeholder="{{.Params.email}}" required>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="{{.Params.email}}" required/>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" name="message" id="message" rows="12"
-                              placeholder="{{.Params.message}}"></textarea>
+                    <textarea class="form-control" name="message" id="message" rows="12" placeholder="{{.Params.message}}" required></textarea>
                     <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group">
@@ -71,7 +67,7 @@
              submitSuccess: function($form, e) {
                  e.preventDefault();
 
-                 var submitButton = $('input[type=submit]', $form);
+                 var submitButton = $('button[type=submit]', $form);
                  $.ajax({
                      type: 'POST',
                      url: $form.prop('action'),
